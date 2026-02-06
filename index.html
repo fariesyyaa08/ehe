@@ -76,10 +76,11 @@
 
     .heart {
       position: absolute;
-      bottom: -10px;
-      color: rgba(255,255,255,0.8);
-      animation: floatUp linear infinite;
-      font-size: 20px;
+  bottom: -10px;
+  color: rgba(255,255,255,0.8);
+  animation: floatUp linear infinite;
+  font-size: 20px;
+  pointer-events: none;
     }
 
       .fade-in {
@@ -137,7 +138,7 @@
           surprise.classList.remove("hidden");
           surprise.classList.add("fade-in");
 
-          document.getElementById("surpriseBtn")?.remove();
+          document.getElementById("surpriseBtn").remove();
 
           typeText();
     }
@@ -151,30 +152,21 @@
       setTimeout(typeText, 30);
      }
   }
-</script
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "💗";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (Math.random() * 3 + 4) + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 7000);
+  }
+
+  setInterval(createHeart, 300);
+</script>
     </p>
   </div>
-
-  <script>
-    function reveal() {
-      document.getElementById("surprise").classList.remove("hidden");
-    }
-
-    function createHeart() {
-      const heart = document.createElement("div");
-      heart.classList.add("heart");
-      heart.innerHTML = "💗";
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.style.animationDuration = (Math.random() * 3 + 4) + "s";
-      document.body.appendChild(heart);
-
-      setTimeout(() => {
-        heart.remove();
-      }, 7000);
-    }
-
-    setInterval(createHeart, 300);
-  </script>
 
 </body>
 </html>
